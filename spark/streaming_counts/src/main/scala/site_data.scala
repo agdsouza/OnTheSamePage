@@ -15,7 +15,7 @@ import java.util.{Calendar, Date}
 import org.apache.spark.sql.streaming.{OutputMode, Trigger}
 import scala.concurrent.duration._
 
-object PriceDataStreaming {
+object site_data {
   def main(args: Array[String]) {
 
     val brokers = "ec2-18-204-77-15.compute-1.amazonaws.com:9092"
