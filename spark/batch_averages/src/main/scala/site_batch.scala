@@ -41,9 +41,10 @@ object site_batch {
       return new SimpleDateFormat(outputFormat).format(dateAux.getTime())
     }
 
-   // read in the data from HDFS
+   // set up time frame for Cassandra query
    val now = dateAddMinute(getCurrentdateTimeStamp, -1, "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm:ss")
    val prev_time = dateAddMinute(getCurrentdateTimeStamp, -2, "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm:ss")
+   
    val rddFromClusterOne = {
        // Sets connectorToClusterOne as default connection for everything in this code block
        implicit val c = connectorToClusterOne
