@@ -18,5 +18,5 @@ dag = DAG('sparkBatchMinute', default_args=default_args, schedule_interval='*/1 
 # task to run a Spark job every minute
 averagePageCounts = BashOperator(
     task_id='average-page',
-    bash_command='./average_page.sh',
+    bash_command='~/scripts/average_page.sh',
     dag=dag)
