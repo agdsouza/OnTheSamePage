@@ -111,5 +111,3 @@ Finally, unpause the Spark DAG and run the scheduler to get the averages every m
 airflow unpause sparkBatchMinute
 airflow scheduler
 ```
-
-# Data Challenges
