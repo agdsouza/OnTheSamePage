@@ -18,7 +18,7 @@ In web development, it is important to understand how users interact with pages 
 Using Kafka to ingest messages, Spark Streaming to calculate user counts in 5 second intervals along with Spark batch jobs to calculate average page counts every minute as a baseline, and Cassandra to store the processed data to be queried, the data is then rendered in Dash to show real-time updates to user visits every 5 seconds.
 
 # Getting Started
-To set up the application, you must have an AWS account set up to run it within the cloud. Clusters must be set up to match the configurations defined in the "Pipeline" section for Kafka, Spark and Cassandra. The guide used within the pegasus (ADD HYPERLINK TO THIS) documentation can be used to configure AWS onto your created clusters.
+To set up the application, you must have an AWS account set up to run it within the cloud. Clusters must be set up to match the configurations defined in the "Pipeline" section for Kafka, Spark and Cassandra. The guide used within the [pegasus](https://github.com/InsightDataScience/pegasus) documentation can be used to configure AWS onto your created clusters.
 
 Once the clusters are up, install the following onto all m4.large clusters as per the pegasus documentation:
 ```
