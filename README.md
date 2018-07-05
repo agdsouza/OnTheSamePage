@@ -49,7 +49,7 @@ start
 ## Kafka Setup
 Use `peg ssh` on your Kafka cluster to SSH into the master node. Create the necessary "site_log" Kafka topic using the command:
 ```
-create "site_log" topic command
+/usr/local/kafka/bin/kafka-topics.sh --create --zookeeper localhost:2181 --topic site_topic --partitions 4 --replication-factor 2
 ```
 
 Move the "kafka" folder from the repository folder into the home directory of the Kafka node you want to run the Kafka producer script from. Then, to run the producer script through `tmux`, run 
