@@ -68,7 +68,7 @@ Use `peg ssh` on your Spark & Cassandra cluster to SSH into the master node. Mov
 Run the Cassandra .cql file from the "cassandra" directory to set up the necessary keyspace and tables using:
 ```
 cqlsh -f cassandra_schema.cql
-
+```
 ### Spark Streaming
 Within the "streaming_counts" folder, run these commands to build and assemble the Scala project:
 ```
@@ -105,7 +105,7 @@ Edit the config file `~/airflow/airflow.cfg` so that `dags_folder=[path/to/airfl
 python airflow_spark_dag.py
 ```
 You can check your list of DAGs using the `airflow list-dags` command. If your created DAG does not appear in the list, run the command `airflow resetdb` and then re-initialize the database and add the DAG again.
-```
+
 Finally, unpause the Spark DAG and run the scheduler to get the averages every minute:
 ```
 airflow unpause sparkBatchMinute
