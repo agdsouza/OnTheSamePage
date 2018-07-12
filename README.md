@@ -1,6 +1,4 @@
 # OnTheSamePage
-*Documentation is a work in progress*
-
 My Insight Data Engineering project for the NY Summer 2018 session. "On the Same Page" is an application that uses a data pipeline to monitor website pages in real time.
 
 # Motivation
