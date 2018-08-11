@@ -1,6 +1,8 @@
 # On The Same Page
 My Insight Data Engineering project for the NY Summer 2018 session. "On the Same Page" is an application that uses a data pipeline to monitor website pages in real time.
 
+A video demo of the application can be found [here](https://www.youtube.com/watch?v=fFACYU7QMPk).
+
 # Motivation
 In web development, it is important to understand how users interact with pages in their websites to compile analytics, monitor any abnormal-or even dangerous-changes in web traffic, and track pages that users are most engaged with. Moreover, page-by-page monitoring can help news and video websites understand the articles or videos that attract the most users, allow data scientists to analyze popular topics, and advertisers determine pages that make the most money.
 
