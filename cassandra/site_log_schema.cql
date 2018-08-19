@@ -1,12 +1,11 @@
 
 CREATE KEYSPACE site_log WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3'}  AND durable_writes = true;
 
-CREATE TABLE site_log.unique_page_visit_table (
+CREATE TABLE site_log.page_averages (
     url text,
-    interval_time timestamp,
-    duration int,
-    unique_visits int,
-    PRIMARY KEY (url, interval_time)
+    time timestamp,
+    average int,
+    PRIMARY KEY (url, time)
 ) WITH CLUSTERING ORDER BY (interval_time DESC)
     AND bloom_filter_fp_chance = 0.01
     AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
@@ -26,7 +25,6 @@ CREATE TABLE site_log.unique_page_visit_table (
 CREATE TABLE site_log.page_visit_table (
     url text,
     interval_time timestamp,
-    duration int,
     visits int,
     PRIMARY KEY (url, interval_time)
 ) WITH CLUSTERING ORDER BY (interval_time DESC)
@@ -50,7 +48,7 @@ CREATE TABLE site_log.raw_data (
     starttime timestamp,
     ip text,
     PRIMARY KEY (url, starttime)
-) WITH CLUSTERING ORDER BY (starttime ASC)
+) WITH CLUSTERING ORDER BY (starttime DESC)
     AND bloom_filter_fp_chance = 0.01
     AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
     AND comment = ''
