@@ -12,7 +12,9 @@ import pandas as pd
 import flask
 import numpy as np
 
-HOST = '52.73.46.190'
+# HOST = '52.73.46.190'
+# no need to hardcode cassandra's host ip as it can be accessed via localhost through port forwarding
+HOST = 'localhost'
 KEYSPACE = 'site_log'
 WEBSITE = 'http://myfancysite.com/'
 
