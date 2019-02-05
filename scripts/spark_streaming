@@ -1,0 +1,3 @@
+#!/bin/bash
+
+/opt/spark/apps/scripts/start_streaming_job.sh

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+airflow webserver -p 8081 &
+python /root/airflow/dags/airflow_spark_dag.py
+airflow unpause sparkBatchMinute
+airflow scheduler

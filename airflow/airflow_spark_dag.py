@@ -8,7 +8,7 @@ import os
 default_args = {
         'owner': 'insight-adriana',
         'depends_on_past': False,
-        'start_date': datetime(2018, 6, 27),
+        'start_date': datetime(2019, 2, 1),
         'retries': 5,
         'retry_delay': timedelta(seconds=5),
     }
@@ -18,5 +18,6 @@ dag = DAG('sparkBatchMinute', default_args=default_args, schedule_interval='*/1 
 # task to run a Spark job every minute
 averagePageCounts = BashOperator(
     task_id='average-page',
-    bash_command='~/scripts/average_page.sh',
+    bash_command='/opt/spark/apps/scripts/average_page.sh ',
     dag=dag)
+
