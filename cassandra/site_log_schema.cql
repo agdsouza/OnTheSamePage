@@ -6,7 +6,7 @@ CREATE TABLE site_log.page_averages (
     time timestamp,
     average int,
     PRIMARY KEY (url, time)
-) WITH CLUSTERING ORDER BY (interval_time DESC)
+) WITH CLUSTERING ORDER BY (time DESC)
     AND bloom_filter_fp_chance = 0.01
     AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
     AND comment = ''
