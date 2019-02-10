@@ -24,5 +24,5 @@ The following are deployed as objects in K8S.
 Using Kafka to ingest messages, Spark Streaming to calculate user counts in 5 second intervals along with Spark batch jobs to calculate average page counts every minute as a baseline, and Cassandra to store the processed data to be queried.
 
 # Getting Started
-See the [wiki](https://github.com/agdsouza/OnTheSamePage/wiki/Getting-Started) page for instructions on getting started.
+See the [wiki](https://github.com/sontivr/k8s-on-the-same-page/wiki/Getting-Started) page for instructions on getting started.
 
