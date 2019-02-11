@@ -34,6 +34,12 @@ then
     CASSANDRA_CONNECT_CONF="--conf spark.cassandra.connection.host=$CASSANDRA_HOST"
 fi
 
+SPARK_EXECUTOR_COUNT=3
+if [ ! -z "$EXECUTOR_COUNT" ]
+then 
+    SPARK_EXECUTOR_COUNT=$EXECUTOR_COUNT
+fi
+
 export K8S_CACERT=/var/run/secrets/kubernetes.io/serviceaccount/ca.crt
 export K8S_TOKEN=/var/run/secrets/kubernetes.io/serviceaccount/token
 export DOCKER_IMAGE=sontivr/spark-2.4.0-bin-hadoop2.7:latest
@@ -48,7 +54,7 @@ kubectl expose deployment $DRIVER_NAME --port=$DRIVER_PORT --type=ClusterIP --cl
                 --conf spark.kubernetes.authenticate.oauthTokenFile=/var/run/secrets/kubernetes.io/serviceaccount/token  \
                 --conf spark.kubernetes.authenticate.driver.serviceAccountName=$SA  \
                 --conf spark.kubernetes.namespace=$NAMESPACE  \
-                --conf spark.executor.instances=3  \
+                --conf spark.executor.instances=$SPARK_EXECUTOR_COUNT  \
                 --conf spark.kubernetes.container.image=$DOCKER_IMAGE  \
                 --conf spark.driver.host=$DRIVER_NAME.$NAMESPACE.svc.cluster.local  \
                 --conf spark.driver.port=$DRIVER_PORT  \
