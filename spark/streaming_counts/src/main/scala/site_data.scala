@@ -19,20 +19,23 @@ import scala.concurrent.duration._
 object site_data {
   def main(args: Array[String]) {
 
-    val brokers = "ec2-18-204-77-15.compute-1.amazonaws.com:9092"
+    // val brokers = "ec2-18-204-77-15.compute-1.amazonaws.com:9092"
+    // val brokers = "ec2-34-225-76-88.compute-1.amazonaws.com:9092"
+    val brokers = "my-confluent-oss-cp-kafka:9092"
     val topics = "site_log"
     val topicsSet = topics.split(",").toSet
     // mini batch interval; constant of 5
     val Interval = 5
 
     // Create context with 5 second batch interval
-    val sparkConf = new SparkConf().setAppName("price_data").set("spark.streaming.backpressure.enabled", "false")
+    val sparkConf = new SparkConf().setAppName("spark-stream").set("spark.streaming.backpressure.enabled", "true")
     val ssc = new StreamingContext(sparkConf, Seconds(Interval))
 
     // Create direct kafka stream with brokers and topics
     val kafkaParams = Map[String, String]("metadata.broker.list" -> brokers)
     val messages = KafkaUtils.createDirectStream[String, String, StringDecoder, StringDecoder](ssc, kafkaParams, topicsSet)
-    ssc.checkpoint("s3n://sessionizationbucket/site_log_checkpoint/")
+    // ssc.checkpoint("s3n://sessionizationbucket/site_log_checkpoint/")
+    // ssc.checkpoint("s3a://insight-sontivr/spark-streaming/site_log_checkpoint/")
 
     def getCurrentdateTimeStamp: Timestamp ={
         val today:java.util.Date = Calendar.getInstance.getTime
@@ -41,7 +44,7 @@ object site_data {
         val re = java.sql.Timestamp.valueOf(now)
         return re
     }
-    
+
     // Get the lines and show results
     val lines = messages.map(_._2)
     val ticksDF = lines.map( x => {
@@ -65,5 +68,4 @@ object site_data {
     ssc.awaitTermination()
   }
 }
-
 
