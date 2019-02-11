@@ -19,9 +19,9 @@ object site_batch {
  def main(args: Array[String]) {
 
    // setup the Spark Context named sc
-   val conf = new SparkConf().setAppName("WebDataExample")
+   val conf = new SparkConf().setAppName("spark-batch")
    val sc = new SparkContext(conf)
-   val connectorToClusterOne = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", "52.73.46.190"))
+   val connectorToClusterOne = CassandraConnector(sc.getConf.set("spark.cassandra.connection.host", "192.168.105.170"))
 
    // constant: divide the number of visitors by IntervalDivisor to obtain the average; alter this in case of delays
    val IntervalDivisor = 6
