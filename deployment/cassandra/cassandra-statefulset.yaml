@@ -16,6 +16,16 @@ spec:
         app: cassandra
     spec:
       terminationGracePeriodSeconds: 1800
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: "app"
+                    operator: In
+                    values:
+                    - cassandra
+              topologyKey: "kubernetes.io/hostname"
       containers:
       - name: cassandra
         image: gcr.io/google-samples/cassandra:v13
